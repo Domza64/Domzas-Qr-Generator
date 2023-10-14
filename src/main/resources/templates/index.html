@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domza's QR Generator</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <main>
+        <div>
+            <span>Thank you for using</span>
+            <h1>Domza's QR Generator</h1>
+        </div>
+        <div>
+            <input type="text" name="" id="input">
+            <button onclick="loadQrCode()">Generate</button>
+        </div>
+        <div>
+            <div id="qr-container">
+
+            </div>
+            <button>Download</button>
+        </div>
+    </main>
+    <script>
+        function loadQrCode() {
+            $.post("/api/getId", { text:$('#input').val() }, function (data) {
+                var image = $('<img src="/api/qrcode/' + data + '"></img>');
+                $('#qr-container').html('').append(image);
+            });
+        }
+    </script>
+</body>
+</html>
