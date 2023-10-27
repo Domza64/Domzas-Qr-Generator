@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Simple free to use QR Code generator.">
+    <meta name="keywords" content="QR Code, QR Code generator">
+    <meta name="author" content="Dominik Juričić">
+    <meta property="og:title" content="Domza's QR Generator">
+    <meta property="og:description" content="Simple free to use QR Code generator.">
+    <meta property="og:image" content="https://cdn.domza.xyz/image/qr-generator-logo.svg">
+
     <title>Domza's QR Generator</title>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous">
-    </script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" href="/static/css/index.css">
 </head>
 <body>
-    <main>
-        <div>
-            <span>Thank you for using</span>
-            <h1>Domza's QR Generator</h1>
-        </div>
-        <div>
-            <input type="text" name="" id="input">
-            <button onclick="loadQrCode()">Generate</button>
-        </div>
-        <div>
-            <div id="qr-container">
+    <header>
 
+    </header>
+    <main>
+        <h1>Domza's QR Generator</h1>
+        <div class="app-container">
+            <div class="input-container">
+                <input type="text" id="input">
+                <button onclick="loadQrCode()">Generate</button>
             </div>
-            <button>Download</button>
+            <div>
+                <div id="qr-container">
+    
+                </div>
+                <button>Download</button>
+            </div>
         </div>
     </main>
-    <script>
-        function loadQrCode() {
-            $.post("/api/getId", { text:$('#input').val() }, function (data) {
-                var image = $('<img src="/api/qrcode/' + data + '"></img>');
-                $('#qr-container').html('').append(image);
-            });
-        }
+    <footer>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous">
     </script>
+    <script th:src="@{/js/index.js}"></script>
 </body>
 </html>
