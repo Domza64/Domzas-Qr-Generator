@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Simple free to use QR Code generator.">
-    <meta name="keywords" content="QR Code, QR Code generator">
-    <meta name="author" content="Dominik Juričić">
-    <meta property="og:title" content="Domza's QR Generator">
-    <meta property="og:description" content="Simple free to use QR Code generator.">
-    <meta property="og:image" content="https://cdn.domza.xyz/image/qr-generator-logo.svg">
+        <meta name="description" content="Simple free to use QR Code generator.">
+        <meta name="keywords" content="QR Code, QR Code generator">
+        <meta name="author" content="Dominik Juričić">
+        <meta property="og:title" content="Domza's QR Generator">
+        <meta property="og:description" content="Simple free to use QR Code generator.">
+        <meta property="og:image" content="https://cdn.domza.xyz/image/qr-generator-logo.svg">
 
-    <title>Domza's QR Generator</title>
+        <title>Domza's QR Generator</title>
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
-    <link rel="stylesheet" href="/static/css/index.css">
-</head>
-<body>
-    <header>
-
-    </header>
-    <main>
-        <h1>Domza's QR Generator</h1>
-        <div class="app-container">
-            <div class="input-container">
-                <input type="text" id="input">
-                <button onclick="loadQrCode()">Generate</button>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+        <link rel="stylesheet" href="/static/css/index.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <img class="title" src="/static/images/Qr-Gen-Logo.svg" th:src="@{/images/Qr-Gen-Logo.svg}" alt="Domza's QR Generator logo">
+                <nav>
+                    <ul>
+                        <li><a href="https://domza.xyz">My Website</a></li>
+                        <li><a href="https://github.com/Domza64/Domzas-Qr-Generator/">Project Source</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div>
-                <div id="qr-container">
-    
+        </header>
+        <main>
+            <img class="title" src="/static/images/Qr-Gen-Logo.svg" th:src="@{/images/Qr-Gen-Logo.svg}" alt="Domza's QR Generator logo">
+            <div class="app-container">
+                <div class="input-container">
+                    <div class="input-field-container">
+                        <input type="text" id="input" placeholder="Enter your text/link here">
+                        <div>
+                            <label style="color: red;" for="formats">Choose format:</label>
+                            <select name="formats">
+                                <option value="volvo">SVG</option>
+                                <option value="saab">PNG</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="color: red;" for="resolution">Choose resolution:</label>
+                            <select name="resolution">
+                              <option value="200">200px</option>
+                              <option value="600">600px</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <button class="button" onclick="loadQrCode()">Generate</button>
                 </div>
-                <button>Download</button>
+                <div class="result-container">
+                    <div id="qr-container">
+                        <span>Your QR code</span>
+                    </div>
+                    <a id="download-svg" download class="button">Download SVG</a>
+                    <a id="download-png" download class="button">Download PNG</a>
+                </div>
             </div>
-        </div>
-    </main>
-    <footer>
-
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous">
-    </script>
-    <script th:src="@{/js/index.js}"></script>
-</body>
+        </main>
+        <footer>
+            <span>
+                [!] App in BETA [!]
+                <br>
+                Than you for using Domza's QR Generator!
+            </span>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+        <script th:src="@{/js/index.js}"></script>
+    </body>
 </html>
